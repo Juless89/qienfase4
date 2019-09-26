@@ -1,0 +1,31 @@
+<style>
+    textarea{
+        background-color:green;
+ 
+    }
+    b{
+        background-color: red;
+ 
+    }
+ 
+</style>
+<script>
+    window.onload = function(){
+        alert("klaar met laden");
+    }
+    function optellen(){
+        let getal1 = document.getElementById("1").value;
+        let getal2 = document.getElementById("2").value;
+        alert(+getal1 + +getal2);
+    }
+
+</script>
+
+
+
+1e getal: <input id="1" type="text" name="fname"><br>
+2e getal: <input id="2" type="text" name="lname"><br>
+<button onclick="optellen()">Click me</button>
+
+
+
