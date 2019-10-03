@@ -30,8 +30,8 @@ td:hover::after {
 
 td{
     border:2px solid red;
-    width: 30px;
-    height: 30px;
+    width: 100px;
+    height: 100px;
 }
 
 a{

@@ -1,8 +1,4 @@
 <style>
-    textarea{
-        background-color:green;
- 
-    }
     b{
         background-color: red;
  
@@ -16,7 +12,17 @@
     function optellen(){
         let getal1 = document.getElementById("1").value;
         let getal2 = document.getElementById("2").value;
-        alert(+getal1 + +getal2);
+        let uitkomst = +getal1 + +getal2;
+
+        if (uitkomst > 0) {
+            document.getElementById("uitkomst").style.background = "green";
+        } else if (uitkomst < 0) {
+            document.getElementById("uitkomst").style.background = "red";
+        }
+
+
+        document.getElementById("uitkomst").value = uitkomst;
+
     }
 
 </script>
@@ -26,6 +32,8 @@
 1e getal: <input id="1" type="text" name="fname"><br>
 2e getal: <input id="2" type="text" name="lname"><br>
 <button onclick="optellen()">Click me</button>
+<br>
+<textarea id="uitkomst"></textarea>
 
 
 
