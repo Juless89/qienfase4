@@ -53,6 +53,7 @@ class Board {
                 this.update_local_storage();
                 this.set_current_player();
                 this.highlight_cell('enter', x + y)
+                this.calculate_win(x + i);
                 break;
             }
             // When the highest cell is filled the row is full.
@@ -86,6 +87,53 @@ class Board {
                 break;
             }
         }
+    }
+
+    calculate_win(id){
+        const coords = Array.from(Array(16), () => new Array(4));
+        for (let x=0; x<4; x++) {
+            for (let y=0; y<4;y++){
+                coords[x][y] = (y - x) + ',' + 0;
+                coords[x+4][y] = 0 + ',' + (y - x);
+                coords[x+8][y] = (y - x) + ',' + (y - x);
+                coords[x+12][y] = (x - y) + ',' + (y - x);
+            }
+        }
+
+        console.log(coords);
+        
+        for (let x=0; x<coords.length; x++) {
+            let player = null;
+            for (let y=0; y<4;y++){
+                const offset = coords[x][y].split(",");
+                const a = parseInt(offset[0]);
+                const b = parseInt(offset[1]);
+                const c = parseInt(id[0]);
+                const d = parseInt(id[1]);
+
+                try {
+                    if (y === 0) {
+                        player = this.arr[c+a][d+b].name;
+                    }
+                    else if(player !== this.arr[c+a][d+b].name) {
+                        console.log('Not same player');
+                        break;
+                    }
+                    else if (y === 3) {
+                        console.log(this.arr[c+a][d+b].name, coords[x]);
+                        const player = this.players[this.current_player % 2].name
+                        alert('Player ' + player  + ' has won');
+                        this.reset(board);
+                    }
+                }
+                catch(error) {
+                    //console.log("out of bounds");
+                    break;
+                }
+            }
+        }
+        
+
     }
 
     // Covert stored plays to board
