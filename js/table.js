@@ -121,7 +121,7 @@ class Board {
                     }
                     else if (y === 3) {
                         console.log(this.arr[c+a][d+b].name, coords[x]);
-                        const player = this.players[this.current_player % 2].name
+                        const player = this.players[(this.current_player-1) % 2 ].name
                         alert('Player ' + player  + ' has won');
                         this.reset(board);
                     }
